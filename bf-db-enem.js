@@ -13,7 +13,7 @@ let sounds={};Object.keys(urls).forEach(function(k){let a=document.createElement
 function tone(wrong){if(!fx)return;try{let A=window.AudioContext||window.webkitAudioContext;if(!A)return;aCtx=aCtx||new A();if(aCtx.state==='suspended')aCtx.resume().catch(function(){});let t=aCtx.currentTime,o=aCtx.createOscillator(),g=aCtx.createGain();o.type=wrong?'sawtooth':'sine';o.connect(g);g.connect(aCtx.destination);o.frequency.setValueAtTime(wrong?250:700,t);o.frequency.exponentialRampToValueAtTime(wrong?140:1150,t+.15);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.08,t+.015);g.gain.exponentialRampToValueAtTime(.0001,t+.24);o.start(t);o.stop(t+.25)}catch{}}
 function sound(k){if(!fx)return;try{let a=sounds[k];a.pause();a.currentTime=0;const p=a.play();if(p&&p.catch)p.catch(function(){tone(k==='no')})}catch{tone(k==='no')}}
 function ambient(){if(!active||!music)return;try{let p=sounds.bg.play();if(p&&p.catch)p.catch(function(){})}catch{}}
-function stop(){active=false;if(timer){clearInterval(timer);timer=null}sounds.bg.pause();['bf5-toolbar','bf5-stats','bf5-palette'].forEach(function(id){document.getElementById(id)?.remove()})}
+function stop(){active=false;if(timer){clearInterval(timer);timer=null}Object.values(sounds).forEach(function(a){try{a.pause();a.currentTime=0}catch(e){}});['bf5-toolbar','bf5-stats','bf5-palette'].forEach(function(id){document.getElementById(id)?.remove()})}
 function quizState(){return typeof activeQuiz==='undefined'?null:activeQuiz}
 function mount(){if(document.getElementById('bf5-toolbar'))return;const modal=root.querySelector('.modal'),body=document.getElementById('modalBody');
 const toolbar=document.createElement('div');toolbar.id='bf5-toolbar';toolbar.className='bf5-toolbar';toolbar.innerHTML='<div class="bf5-brand"><i>✦</i><span>GABARITO MAX · DB EXPERIENCE<small id="bf5-name">BRASIL FORTE // SISTEMA DIGITAL</small></span></div><div class="bf5-tools"><button data-bf5="fx"></button><button data-bf5="music"></button><button data-bf5="read">🔊 Ouvir</button><button data-bf5="full">⛶ Tela cheia</button><button data-bf5="help">⌨ Atalhos</button><button data-bf5="exit">✕ Sair</button></div>';
@@ -35,5 +35,8 @@ window.choose=function(i){let q=quizState();if(q?.qs?.[q.index])sound(i===q.qs[q
 window.drawResult=function(){const v=prev.result.apply(this,arguments);stop();return v};
 window.closeModal=function(){stop();if(document.fullscreenElement===root)document.exitFullscreen?.().catch?.(function(){});return prev.close.apply(this,arguments)};
 window.addEventListener('pagehide',stop);
-window.BFExperienceV5={version:'5',audio:urls};
+document.addEventListener('visibilitychange',function(){if(document.hidden) stop()});
+const observer=new MutationObserver(function(){if(active&&!root.classList.contains('on'))stop()});
+observer.observe(root,{attributes:true,attributeFilter:['class','aria-hidden']});
+window.BFExperienceV5={version:'5.1',audio:urls,stop:stop};
 })();
