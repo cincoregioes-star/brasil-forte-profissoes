@@ -5,17 +5,17 @@
 ## Status de comprovação
 
 - E-mails da Hotmart confirmam aprovação de 12 produtos com IDs próprios.
-- O link `Q108126245C` está associado por captura de tela ao produto de ID 8776492.
-- A correspondência dos **outros 11** foi inferida da correlação entre IDs crescentes de cadastro e códigos numéricos crescentes de checkout. É uma **hipótese forte, não uma validação oficial**.
+- Os links `Q108126245C` (Atendimento e Vendas, ID 8776492) e `P108126174G` (Auxiliar Administrativo, ID 8776453) foram conferidos por capturas de tela da página de pagamento. Ambos exibem título compatível e preço R$ 19,90.
+- A correspondência dos **outros 10** foi inferida da correlação entre IDs crescentes de cadastro e códigos numéricos crescentes de checkout. É uma **hipótese forte, não uma validação oficial**.
 - Os destinos não puderam ser abertos automaticamente para conferir nomes dos produtos. Esta alteração está em uma *branch de validação* e **não deve ser mesclada** sem conferir individualmente os títulos e a entrega.
 
 ## Relação preparada
 
 | Produto | ID Hotmart | Checkout recebido | Situação |
 |---|---:|---|---|
-| Auxiliar Administrativo | 8776453 | https://pay.hotmart.com/P108126174G | Pendente conferir título |
+| Auxiliar Administrativo | 8776453 | https://pay.hotmart.com/P108126174G | Confirmado em captura: título + R$ 19,90 |
 | Logística e Almoxarifado | 8776483 | https://pay.hotmart.com/O108126233P | Pendente conferir título |
-| Atendimento, Vendas e Caixa | 8776492 | https://pay.hotmart.com/Q108126245C | Confirmado em captura |
+| Atendimento, Vendas e Caixa | 8776492 | https://pay.hotmart.com/Q108126245C | Confirmado em captura: título + R$ 19,90 |
 | Inteligência Artificial no Trabalho | 8776504 | https://pay.hotmart.com/N108126261F | Pendente conferir título |
 | Excel e Análise de Dados | 8776509 | https://pay.hotmart.com/D108126270R | Pendente conferir título |
 | Cuidador de Idosos | 8776515 | https://pay.hotmart.com/M108126280C | Pendente conferir título |
