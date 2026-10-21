@@ -9,7 +9,7 @@ window.BF_CHECKOUTS = Object.freeze({
   // Produto Hotmart ID 8776483
   "logistica-almoxarifado": "",
   // Produto Hotmart ID 8776492
-  "atendimento-vendas": "",
+  "atendimento-vendas": "https://pay.hotmart.com/Q108126245C",
   // Produto Hotmart ID 8776504
   "ia-trabalho": "",
   // Produto Hotmart ID 8776509
