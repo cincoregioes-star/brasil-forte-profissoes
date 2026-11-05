@@ -68,6 +68,13 @@
 .bf-buy-status{color:#ecdaae;font-size:12px;font-weight:800}
 .bf-checkout-available{color:#acffd8;font-size:12px;font-weight:900}
 @media(max-width:760px){.bf-benefits,.bf-faq{grid-template-columns:1fr}}
+
+/* Navegação móvel: catálogo acessível no topo, sem alterar a versão desktop */
+@media(max-width:620px){
+ .navlinks a[href="#catalogo"]{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;padding:9px 12px;border-radius:12px;background:var(--gold);color:#06111b;font-size:12px;min-height:40px}
+ .navlinks a.mobile{display:none}
+ #catalogo{scroll-margin-top:88px}
+}
 </style>
 </head>
 <body>
